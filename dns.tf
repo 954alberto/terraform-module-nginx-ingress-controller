@@ -7,8 +7,8 @@ data "kubernetes_service" "nginx-ingress-controller" {
   }
 }
 
-output "nginx-ingress-ip" {
-  value = [data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress.0.ip]
+output "nginx-ingress-hostname" {
+  value = [data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress.0.hostname]
 }
 
 output "nginx-ingress-lb" {
