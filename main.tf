@@ -4,6 +4,11 @@ resource "kubernetes_namespace" "nginx-ingress" {
   }
 }
 
+data "helm_repository" "stable" {
+  name = "stable"
+  url  = "https://kubernetes-charts.storage.googleapis.com"
+}
+
 resource "helm_release" "nginx-ingress" {
   name      = var.name
   namespace = var.namespace
