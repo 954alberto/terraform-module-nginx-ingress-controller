@@ -7,6 +7,14 @@ data "kubernetes_service" "nginx-ingress-controller" {
   }
 }
 
+output "nginx-ingress-ip" {
+  value = [data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress.0.ip]
+}
+
+output "nginx-ingress-lb" {
+  value = [data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress]
+}
+
 resource "aws_route53_record" "api" {
   zone_id = lookup(var.aws_route53, "zone_id")
   name    = "*.${lookup(var.aws_route53, "domain")}"
