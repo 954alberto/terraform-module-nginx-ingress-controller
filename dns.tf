@@ -17,7 +17,7 @@ output "nginx-ingress-lb" {
 
 resource "aws_route53_record" "api" {
   zone_id = lookup(var.aws_route53, "zone_id")
-  name    = "*.${lookup(var.aws_route53, "domain")}"
+  name    = lookup(var.aws_route53, "domain")
   type    = lookup(var.aws_route53, "type")
   ttl     = lookup(var.aws_route53, "ttl")
   records = [data.kubernetes_service.nginx-ingress-controller.load_balancer_ingress.0.hostname]
