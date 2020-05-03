@@ -17,3 +17,15 @@ variable "helm_values" {
 variable "chart_version" {
   description = "Helm chart version"
 }
+
+variable "chart" {
+  description = "Helm chart name"
+}
+
+variable "helm_repository" {
+  description = "Helm repository name"
+}
+
+variable "helm_repository_url" {
+  description = "Helm repository url"
+}

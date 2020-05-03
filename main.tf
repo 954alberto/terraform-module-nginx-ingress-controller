@@ -5,14 +5,15 @@ resource "kubernetes_namespace" "nginx-ingress" {
 }
 
 data "helm_repository" "stable" {
-  name = "stable"
-  url  = "https://kubernetes-charts.storage.googleapis.com"
+  name = var.helm_repository
+  url  = var.helm_repository_url
 }
 
 resource "helm_release" "nginx-ingress" {
   name      = var.name
   namespace = var.namespace
-  chart     = "stable/nginx-ingress"
+  chart     = var.chart
   version   = var.chart_version
   values    = [var.helm_values]
+  timeout   = var.helm_timeout
 }
