@@ -12,7 +12,7 @@ data "helm_repository" "stable" {
 resource "helm_release" "nginx-ingress" {
   name      = var.name
   namespace = var.namespace
-  chart     = "${var.helm_repository/var.chart}"
+  chart     = var.helm_repository/var.chart
   version   = var.chart_version
   values    = [var.helm_values]
   timeout   = var.helm_timeout
