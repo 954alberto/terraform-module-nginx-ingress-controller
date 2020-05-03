@@ -29,6 +29,7 @@ variable "helm_repository" {
 variable "helm_repository_url" {
   description = "Helm repository url"
 }
+
 variable "helm_timeout" {
   description = "Helm timeout"
 }
