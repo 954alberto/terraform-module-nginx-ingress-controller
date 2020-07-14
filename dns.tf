@@ -16,6 +16,7 @@ output "nginx-ingress-lb" {
 }
 
 resource "aws_route53_record" "api" {
+  depends_on = [helm_release.nginx-ingress]
   zone_id = lookup(var.aws_route53, "zone_id")
   name    = lookup(var.aws_route53, "domain")
   type    = lookup(var.aws_route53, "type")
