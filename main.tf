@@ -1,4 +1,5 @@
 resource "kubernetes_namespace" "nginx-ingress" {
+  depends_on = [null_resource.wait_for_eks_cluster]
   metadata {
     name = var.namespace
   }
