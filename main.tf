@@ -5,13 +5,9 @@ resource "kubernetes_namespace" "nginx-ingress" {
   }
 }
 
-data "helm_repository" "stable" {
-  name = var.helm_repository
-  url  = var.helm_repository_url
-}
-
 resource "helm_release" "nginx-ingress" {
   depends_on = [null_resource.wait_for_eks_cluster]
+  repository = var.helm_repository_url
   name      = var.name
   namespace = var.namespace
   chart     = var.chart
